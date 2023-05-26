@@ -1,6 +1,6 @@
 function y = code5(r,a,d,n0,T)
 
-% par‚metros
+% par√¢metros
 test = -1;
 
 delta = 0.001;
@@ -15,11 +15,11 @@ lambda = zeros(1,M+1);
 
 u = zeros(1,M+1);
 
-% comeÁando a lÛgica
+% come√ßando a l√≥gica
 
 while(test < 0)
 
-%PreparaÁ„o
+%Prepara√ß√£o
     oldu = u;
     oldN = N;
     oldlambda = lambda;
@@ -30,7 +30,7 @@ while(test < 0)
         k3 = r*(N(i)+ h2*k2)*log(1/(N(i)+ h2*k2)) - 0.5*(u(i)+u(i+1))*d*(N(i)+ h2*k2);
         k4 = r*(N(i)+ h*k3)*log(1/(N(i)+ h*k3)) - u(i+1)*d*(N(i)+ h*k3);
 
-        %atualizaÁ„o do estado
+        %atualiza√ß√£o do estado
         N(i+1) = N(i) + (h/6)*(k1 + 2*k2 + 2*k3 + k4);
     end
 
@@ -42,12 +42,12 @@ while(test < 0)
         k3 = -2*a*0.5*(N(j)+N(j-1)) - (lambda(j)-h2*k2)*r*log(1/(0.5*(N(j)+N(j-1)))) + (lambda(j)-h2*k2)*r + (lambda(j)-h2*k2)*0.5*(u(j)+u(j-1))*d;
         k4 = -2*a*N(j-1) - (lambda(j)-h*k3)*r*log(1/(N(j-1))) + (lambda(j)-h*k3)*r + (lambda(j)-h*k3)*u(j-1)*d;
 
-        % a atualizaÁ„p do estado
+        % a atualiza√ß√£p do estado
         lambda(j-1) = lambda(j) - (h/6)*(k1 + 2*k2 + 2*k3 + k4);
     end
 
-    %baseada em teoria de controle Ûtimo
-    %CondiÁ„o de otimalidade
+    %baseada em teoria de controle √≥timo
+    %Condi√ß√£o de otimalidade
 
     temp = (lambda.*d.*N)./2;
     u1 = max(temp,0);
@@ -65,7 +65,8 @@ y(2,:) = N;
 y(3,:) = u;
 
 
-
+% fonte: Optimal Control Applied to Biological Models (Chapman & Hall/CRC Mathematical Biology Series Book 15) (English Edition) 1¬™ Edi√ß√£o, eBook Kindle
+% Edi√ß√£o Ingl√™s  por Suzanne Lenhart (Autor), John T. Workman (Autor)
 
 
 
